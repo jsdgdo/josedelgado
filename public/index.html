@@ -11,6 +11,7 @@
     .wrapper figure {overflow: hidden; width: 100px; height: 100px; padding: 0px; margin: 0px 0px 20px;-webkit-border-radius: 100px; -moz-border-radius: 100px; border-radius: 100px;}
     .wrapper figure img {width: 100%; height: auto;}
     .wrapper h1 {font-size: 30px; line-height: 45px; color: #303f9f}
+    .wrapper#es {display: none;}
     .beautiful .wrapper h1 {font-size: 40px; line-height: 60px; font-family: 'Hind', 'Helvetica', sans-serif; font-weight: 600;}
     .wrapper p {font-size: 18px; line-height: 27px; color: #212121}
     .wrapper p a {color: #03a9f4}
@@ -19,7 +20,7 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper" id="en">
     <figure>
       <img src="img/jose.jpg" alt="José Delgado's photo">
     </figure>
@@ -28,8 +29,35 @@
     <p>I like <a href="http://apple.com">apple</a>, basketball, podcasts, <a href="http://arsenal.com">the Arsenal Football Club</a>, and all kinds of junk food.</p>
     <p>I mostly hang out on <a href="http://twitter.com/jsdgdo">twitter</a> and <a href="http://instagram.com/jsdgdo">instagram</a> these days, just because I'm too embarrassed to post my code on <a href="http://github.com/jsdgdo">github</a>.</p>
     <p>If you hate social media <a href="mailto:josedelgadosanabria@gmail.com">shoot me an email</a>! I'd love to collaborate on your project.</p>
+    <p>También hablo <a href="#" onclick="togglepan('es')">castellano</a>.</p>
+  </div>
+  <div class="wrapper" id="es">
+    <figure>
+      <img src="img/jose.jpg" alt="José Delgado's photo">
+    </figure>
+    <h1>Hola! Soy José</h1>
+    <p>Soy un desarrollador front end basado en <a href="https://en.wikipedia.org/wiki/Asunción">Asunción</a>, trabajando <a href="http://abc.com.py">aquí</a>. Es mi intención hacer un sitio mejor, pero por ahora les muestro este.</p>
+    <p>Soy fan de <a href="http://apple.com">apple</a>, el basket, los podcasts, el <a href="http://arsenal.com">Arsenal</a>, y la comida chatarra.</p>
+    <p>Generalmente estoy en <a href="http://twitter.com/jsdgdo">twitter</a> o <a href="http://instagram.com/jsdgdo">instagram</a>, que más tiene que ver con mi vergüenza a la hora de postear código en <a href="http://github.com/jsdgdo">github</a>.</p>
+    <p>Si no te gusta el social media <a href="mailto:josedelgadosanabria@gmail.com">envíame un email</a>! Me encantaría colaborar en tu proyecto.</p>
+    <p>I also speak in <a href="#" onclick="togglepan('en')">english</a>.</p>
   </div>
   <script type="text/javascript">
+
+  function togglepan(which)
+  {
+    if (which == 'es')
+    {
+      document.getElementById('es').style.display='block';
+      document.getElementById('en').style.display='none';
+    }
+    else
+    {
+      document.getElementById('es').style.display='none';
+      document.getElementById('en').style.display='block';
+    }
+  }
+
   WebFontConfig = {
     google: { families: [ 'Hind:400,600:latin', 'Open+Sans:400,600:latin' ] }
   };
