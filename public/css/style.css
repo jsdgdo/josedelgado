@@ -86,6 +86,7 @@ body {
   &.night{
     background-color: var(--night-bg);
     color: var(--night-body);
+    background-image: url('../img/nightcharm.svg');
   } 
 }
 a {
@@ -135,9 +136,12 @@ a {
     line-height: 1;
     letter-spacing: 2px;
     font-family: var(--display);
-    max-width: 20rem;
-    color: var(--day-heading);
+    max-width: 20rem;    
     text-transform: uppercase;
+    color: var(--day-heading);
+    .night & {
+      color: var(--night-heading);
+    }
   }
   & p {
     font-size: 1.5rem;
