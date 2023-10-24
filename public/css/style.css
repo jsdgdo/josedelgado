@@ -61,15 +61,20 @@
   --night-heading: #4AB4ED;
   --night-bg: #222539;
   /*fonts*/
-  --regular:'aileronregular', Arial, Helvetica;
-  --italic: 'aileronitalic', Arial, Helvetica;
-  --bold: 'aileronbold', Arial, Helvetica;
-  --bold-italic: 'aileronbold_italic', Arial, Helvetica;
-  --light: 'aileronlight', Arial, Helvetica;
-  --light-italic: 'aileronlight_italic', Arial, Helvetica;
+  --regular:'aileronregular', Arial, Helvetica, sans-serif;
+  --italic: 'aileronitalic', Arial, Helvetica, sans-serif;
+  --bold: 'aileronbold', Arial, Helvetica, sans-serif;
+  --bold-italic: 'aileronbold_italic', Arial, Helvetica, sans-serif;
+  --light: 'aileronlight', Arial, Helvetica, sans-serif;
+  --light-italic: 'aileronlight_italic', Arial, Helvetica, sans-serif;
+  --display: 'stentigaregular', 'aileronregular', Arial, Helvetica, sans-serif;
 }
 body {
   background-color: var(--day-bg);
+  background-image: url('../img/daycharm.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain; 
   color: var(--day-body);
   font-family: var(--regular);
   font-size: .75rem;
@@ -78,7 +83,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
   &.night{
     background-color: var(--night-bg);
     color: var(--night-body);
@@ -95,13 +99,21 @@ a {
   }
 }
 .wrapper {
+  width: 100%;
   max-width: 62.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0 1rem;
 }
 .header { 
   width: 100%;
   display: flex; 
   flex-direction: row; 
   justify-content: space-between;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-top: 1rem;
   & nav { 
     flex-grow: 1;
     & a {
@@ -113,9 +125,30 @@ a {
     flex-shrink: 0;
   }
 }
-main {
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & .big-title {
+    font-size: 4.2rem;
+    line-height: 1;
+    letter-spacing: 2px;
+    font-family: var(--display);
+    max-width: 20rem;
+    color: var(--day-heading);
+    text-transform: uppercase;
+  }
   & p {
     font-size: 1.5rem;
+    line-height: 1.4;
+    max-width: 30rem;
   }
 }
-
+.footer {
+  flex-grow: 0;
+  padding-bottom: 2rem;
+  & p {
+    margin: 0;
+  }
+}
