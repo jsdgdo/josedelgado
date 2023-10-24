@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>José Delgado</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <style>
+    body {background: #eee}
+    .wrapper {overflow: hidden; max-width: 960px; margin: 0px auto; padding: 30px;}
+    .wrapper figure {overflow: hidden; width: 100px; height: 100px; padding: 0px; margin: 0px 0px 20px;-webkit-border-radius: 100px; -moz-border-radius: 100px; border-radius: 100px;}
+    .wrapper figure img {width: 100%; height: auto;}
+    .wrapper h1 {font-size: 30px; line-height: 45px; color: #303f9f}
+    .wrapper#es {display: none;}
+    .beautiful .wrapper h1 {font-size: 40px; line-height: 60px; font-family: 'Muli', 'Helvetica', sans-serif; font-weight: 600;}
+    .wrapper p {font-size: 18px; line-height: 27px; color: #212121}
+    .wrapper p a {color: #03a9f4}
+    .wrapper p a:hover, .wrapper p a.active {text-decoration: underline; color: #3f51b5}
+    .beautiful .wrapper p {font-size: 20px; line-height: 30px; font-family: 'Muli', sans-serif;}
+  </style>
+</head>
+<body>
+  <div class="wrapper" id="en">
+    <figure>
+      <img src="img/jose.jpg" alt="José Delgado's photo">
+    </figure>
+    <h1>Hi! I'm José</h1>
+    <p>I'm a Product Designer based in <a href="https://en.wikipedia.org/wiki/Asunción">Asunción</a>, working for <a href="https://rocket.chat" target="_blank">these folks</a>. I intend to make a better website but for now (forever maybe?) this one will do.</p>
+    <p>I like photography, podcasts, sports, and all kinds of junk food. I also happen to be a boyfriend & a dad, which keeps me grounded and happy.</p>
+    <p>I mostly hang out on <a rel="me" href="https://mastodon.design/@jd">Mastodon</a> and <a href="https://glass.photo/jose">Glass</a> these days, just because I'm too embarrassed to post my code on <a href="http://github.com/jsdgdo">Github</a>. I sometimes post stuff on <a href="https://dribbble.com/jsdgdo">Dribbble</a> too.</p>
+    <p>If you don't wanna get federated, <a href="mailto:josedelgadosanabria@gmail.com">shoot me an email</a>! I'd love to collaborate on your project. And if you wanna go all corporate you can find me on <a href="https://www.linkedin.com/in/jos%C3%A9-delgado-b787381a4/">LinkedIn</a>.</p>
+    <p>También hablo <a href="#" onclick="togglepan('es')">castellano</a>.</p>
+  </div>
+  <div class="wrapper" id="es">
+    <figure>
+      <img src="img/jose.jpg" alt="José Delgado's photo">
+    </figure>
+    <h1>Hola! Soy José</h1>
+    <p>Soy Diseñador de Productos Digitales, vivo en <a href="https://es.wikipedia.org/wiki/Asunción">Asunción</a>, y trabajo con <a href="https://rocket.chat" target="_blank">estos chicos</a>. Es mi intención hacer un sitio mejor, pero por ahora (o por siempre?) les muestro este.</p>
+    <p>Me gusta la fotografía, los podcasts, los deportes, y la comida chatarra. También soy novio y papá, lo que me mantiene pisando tierra e inmensamente feliz.</p>
+    <p>Generalmente estoy en <a href="https://mastodon.design/@jd">Mastodon</a> o <a href="https://glass.photo/jose">Glass</a>, que más tiene que ver con mi vergüenza a la hora de postear código en <a href="http://github.com/jsdgdo">Github</a>. A veces también posteo cosas en mi perfil de <a href="https://dribbble.com/jsdgdo">Dribbble</a>.</p>
+    <p>Si no querés enviarme un DM, <a href="mailto:josedelgadosanabria@gmail.com">envíame un email</a>! Me encantaría colaborar en tu proyecto. Si te gustan hacer las cosas en forma empresarial, podés encontrame en <a href="https://www.linkedin.com/in/jos%C3%A9-delgado-b787381a4/">LinkedIn</a>.</p>
+    <p>I also speak in <a href="#" onclick="togglepan('en')">english</a>.</p>
+  </div>
+  <script type="text/javascript">
+
+  function togglepan(which)
+  {
+    if (which == 'es')
+    {
+      document.getElementById('es').style.display='block';
+      document.getElementById('en').style.display='none';
+    }
+    else
+    {
+      document.getElementById('es').style.display='none';
+      document.getElementById('en').style.display='block';
+    }
+  }
+
+  WebFontConfig = {
+    google: { families: [ 'Muli:400,600:latin' ] }
+  };
+  (function() {
+    setTimeout(function () {document.getElementsByTagName('body')[0].classList.add('beautiful');}, 1000);
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+</body>
+</html>

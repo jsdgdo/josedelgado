@@ -1,0 +1,121 @@
+/*custom fonts*/
+@font-face {
+  font-family: 'aileronbold';
+  src: url('../fonts/aileron-bold-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-bold-webfont.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'aileronbold_italic';
+  src: url('../fonts/aileron-bolditalic-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-bolditalic-webfont.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'aileronregular';
+  src: url('../fonts/aileron-regular-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'aileronitalic';
+  src: url('../fonts/aileron-italic-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-italic-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'aileronlight';
+  src: url('../fonts/aileron-light-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-light-webfont.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'aileronlight_italic';
+  src: url('../fonts/aileron-lightitalic-webfont.woff2') format('woff2'),
+       url('../fonts/aileron-lightitalic-webfont.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'stentigaregular';
+  src: url('../fonts/stentiga-webfont.woff2') format('woff2'),
+       url('../fonts/stentiga-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  /*color variables*/
+  /*light*/
+  --day-body: #2A2038;
+  --day-link: #33147D;
+  --day-heading: #FA3845;
+  --day-bg: #EFEFEF;
+  /*dark*/
+  --night-body: #CBCFD7;
+  --night-link: #28CDE4;
+  --night-heading: #4AB4ED;
+  --night-bg: #222539;
+  /*fonts*/
+  --regular:'aileronregular', Arial, Helvetica;
+  --italic: 'aileronitalic', Arial, Helvetica;
+  --bold: 'aileronbold', Arial, Helvetica;
+  --bold-italic: 'aileronbold_italic', Arial, Helvetica;
+  --light: 'aileronlight', Arial, Helvetica;
+  --light-italic: 'aileronlight_italic', Arial, Helvetica;
+}
+body {
+  background-color: var(--day-bg);
+  color: var(--day-body);
+  font-family: var(--regular);
+  font-size: .75rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  &.night{
+    background-color: var(--night-bg);
+    color: var(--night-body);
+  } 
+}
+a {
+  color: var(--day-link);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  .night & {
+    color: var(--night-link);
+  }
+}
+.wrapper {
+  max-width: 62.5rem;
+}
+.header { 
+  width: 100%;
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between;
+  & nav { 
+    flex-grow: 1;
+    & a {
+      margin-right: .875rem;
+    }
+  } 
+  & a.toggle {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+main {
+  & p {
+    font-size: 1.5rem;
+  }
+}
+
