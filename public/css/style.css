@@ -77,7 +77,7 @@ body {
   background-size: contain; 
   color: var(--day-body);
   font-family: var(--regular);
-  font-size: .75rem;
+  font-size: 1rem;
   line-height: 1.5;
   display: flex;
   flex-direction: row;
@@ -114,7 +114,7 @@ a {
   justify-content: space-between;
   flex-grow: 0;
   flex-shrink: 0;
-  padding-top: 1rem;
+  padding-top: 2rem;
   & nav { 
     flex-grow: 1;
     & a {
@@ -132,7 +132,7 @@ a {
   flex-direction: column;
   justify-content: center;
   & .big-title {
-    font-size: 4.2rem;
+    font-size: 4rem;
     line-height: 1;
     letter-spacing: 2px;
     font-family: var(--display);
@@ -144,9 +144,70 @@ a {
     }
   }
   & p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.4;
     max-width: 30rem;
+    &.es {
+      display: none;
+    }
+  }
+  & .social {
+    display: flex;
+    flex-direction: row;
+    & .social-link {
+      width: 2rem;
+      height: 2rem;
+      margin-right: .5rem; 
+      padding: 0.5rem;
+      border-radius: 50%;
+      &:first-child {
+        margin-left: -0.5rem;
+      }
+      & span {
+        display: none;
+      }
+      & svg {
+        width: 100%;
+        height: auto;
+        & path, & rect {
+          fill: var(--day-link);
+          .night & {
+            fill: var(--night-link);
+          }
+        }
+      }
+      &.glass svg {
+        & path {
+          stroke: var(--day-link);
+          .night & {
+            stroke: var(--night-link);
+          }
+        }
+      }
+      &:hover {
+        text-decoration: none;
+        background: var(--day-link);
+        .night & {
+          background: var(--night-link);
+        }
+        & svg {
+          & path, & rect {
+            fill: white;
+            .night & {
+              fill: white;
+            }
+          }
+        }
+        &.glass svg {
+          & path {
+            stroke: white;
+            .night & {
+              stroke: white;
+            }
+          }
+        }
+      }
+    }
   }
 }
 .footer {
