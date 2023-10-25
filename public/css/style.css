@@ -147,7 +147,7 @@ a {
     font-size: 1.25rem;
     line-height: 1.4;
     max-width: 30rem;
-    &.es {
+    &#es {
       display: none;
     }
   }

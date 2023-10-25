@@ -11,16 +11,16 @@
   <div class="wrapper">
     <header class="header">
       <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="mailto:josedelgadosanabria@gmail.com">Email me</a>
+        <a id="homelink" href="/">Home</a>
+        <a id="aboutlink" href="/about">About</a>
+        <a id="emaillink" href="mailto:josedelgadosanabria@gmail.com">Email me</a>
       </nav>
-      <a class="toggle" href="#">También hablo español</a>
+      <a class="toggle" id="toggle" href="#" onclick="togglepan('es')">También hablo español</a>
     </header>
     <main class="main">
       <h1 class="big-title">José Delgado</h1>
-      <p class="en">I’m a senior product designer for <a href="https://rocket.chat" target="_blank">Rocket.Chat</a>, a wannabe portrait photographer, boyfriend & dad. I spend most of my time looking for the beautiful yet functional things in life, while trying to make some more.</p>
-      <p class="es">Soy diseñador de productos digitales senior para <a href="https://rocket.chat" target="_blank">Rocket.Chat</a>, me gusta hacer fotos de personas, también soy novio y papá. La mayoría del tiempo miro las cosas lindas (pero funcionales) de la vida, y a la vez trato de hacer más.</p>
+      <p id="en">I’m a senior product designer for <a href="https://rocket.chat" target="_blank">Rocket.Chat</a>, a wannabe portrait photographer, boyfriend & dad. I spend most of my time looking for the beautiful yet functional things in life, while trying to make some more.</p>
+      <p id="es">Soy diseñador de productos digitales senior para <a href="https://rocket.chat" target="_blank">Rocket.Chat</a>, me gusta hacer fotos de personas (cuando me animo a interactuar con ellas), y también soy novio y papá. La mayoría del tiempo miro las cosas lindas (pero funcionales) de la vida, y a la vez trato de hacer más.</p>
       <div class="social">
         <a class="social-link masto" href="https://mastodon.design/@jd">
           <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,22 +61,99 @@
       </div>
     </main>
     <footer class="footer">
-      <p>&copy; 2023 José Delgado</p>
-      <a href="#">Go dark</a>
+      <p>&copy; <span id="year">2023</span> José Delgado</p>
+      <a id="mode" href="#" onclick="togglemode('night')">Go dark</a>
     </footer>
   </div>
   <script type="text/javascript">
+    var escopy = {
+      'toggle' : 'También hablo español', 
+      'home': 'Inicio',
+      'about': 'Sobre mi',
+      'email': 'Email',
+      'dark': 'Ir al lado oscuro',
+      'light': 'Ir a la luz'
+    };
+    var encopy = {
+      'toggle' : 'I also speak english', 
+      'home': 'Home',
+      'about': 'About',
+      'email': 'Email me',
+      'dark': 'Go dark',
+      'light': 'Bring me to light'
+    };
+    var body = document.getElementsByTagName('body')[0];
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('night');
+      document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
+      if (document.getElementById('es').style.display == 'block') {
+        document.getElementById('mode').innerHTML=escopy['light'];
+      } else {
+        document.getElementById('mode').innerHTML=encopy['light'];
+      }
+    }
+    function togglemode(which) {
+      if (which == 'night') {
+        body.classList.add('night');
+        document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
+        if (document.getElementById('es').style.display == 'block') {
+          document.getElementById('mode').innerHTML=escopy['light'];
+        } else {
+          document.getElementById('mode').innerHTML=encopy['light'];
+        }
+      } else {
+        body.classList.remove('night');
+        document.getElementById('mode').setAttribute('onClick', "togglemode(\'night\')");
+        if (document.getElementById('es').style.display == 'block') {
+          document.getElementById('mode').innerHTML=escopy['dark'];
+        } else {
+          document.getElementById('mode').innerHTML=encopy['dark'];
+        }
+      }
+    }
+    function hasClass(element, className) {
+        return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+    }
     function togglepan(which)
     {
       if (which == 'es')
       {
         document.getElementById('es').style.display='block';
         document.getElementById('en').style.display='none';
+        
+        document.getElementById('toggle').innerHTML=encopy['toggle'];
+
+        document.getElementById('homelink').innerHTML=escopy['home'];
+        document.getElementById('aboutlink').innerHTML=escopy['about'];
+        document.getElementById('emaillink').innerHTML=escopy['email'];
+
+        if (body, 'night') {
+          document.getElementById('mode').innerHTML=escopy['light'];
+        } else {
+          document.getElementById('mode').innerHTML=escopy['dark'];
+        }
+
+        document.getElementById('toggle').setAttribute('onClick', "togglepan(\'en\')");
       }
       else
       {
         document.getElementById('es').style.display='none';
         document.getElementById('en').style.display='block';
+
+        document.getElementById('toggle').innerHTML = escopy['toggle'];
+
+        document.getElementById('homelink').innerHTML= encopy['home'];
+        document.getElementById('aboutlink').innerHTML= encopy['about'];
+        document.getElementById('emaillink').innerHTML= encopy['email'];
+        
+        if (hasClass(body, 'night')) {
+          document.getElementById('mode').innerHTML=encopy['light'];
+        } else {
+          document.getElementById('mode').innerHTML=encopy['dark'];
+        }
+
+        document.getElementById('toggle').setAttribute('onClick', "togglepan(\'es\')");
       }
     }
   </script>
