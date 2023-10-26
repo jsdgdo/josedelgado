@@ -237,6 +237,9 @@ a {
     line-height: 1.5;
     color: var(--day-heading);
     font-family: var(--bold);
+    .night & {
+      color: var(--night-heading);
+    }
   }
   & p {
     font-size: 1rem;
