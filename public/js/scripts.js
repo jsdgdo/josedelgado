@@ -52,7 +52,11 @@ function togglepan(which)
 {
   if (which == 'es')
   {
-    document.getElementById('es').style.display='block';
+    if (hasClass(document.getElementById('es'), 'article')) {
+      document.getElementById('es').style.display='flex';  
+    } else {
+      document.getElementById('es').style.display='block';
+    }
     document.getElementById('en').style.display='none';
     
     document.getElementById('toggle').innerHTML=encopy['toggle'];
@@ -71,8 +75,12 @@ function togglepan(which)
   }
   else
   {
+    if (hasClass(document.getElementById('en'), 'article')) {
+      document.getElementById('en').style.display='flex';  
+    } else {
+      document.getElementById('en').style.display='block';
+    }
     document.getElementById('es').style.display='none';
-    document.getElementById('en').style.display='block';
 
     document.getElementById('toggle').innerHTML = escopy['toggle'];
 
