@@ -17,14 +17,14 @@ var encopy = {
 
 var body = document.getElementsByTagName('body')[0];
 document.getElementById("year").innerHTML = new Date().getFullYear();
-console.log(localStorage.getItem('theme'));
-if (!localStorage.getItem('theme')) {
-  localStorage.setItem('theme', 'light');
+console.log(localStorage.getItem('jd-theme'));
+if (!localStorage.getItem('jd-theme')) {
+  localStorage.setItem('jd-theme', 'light');
 }
 
 if (window.matchMedia){
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('theme') != 'light') {
-    localStorage.setItem('theme', 'dark');
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('jd-theme') != 'light') {
+    localStorage.setItem('jd-theme', 'dark');
     body.classList.add('night');
     document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
     if (document.getElementById('es').style.display == 'block') {
@@ -37,24 +37,24 @@ if (window.matchMedia){
 function togglemode(which) {
   if (which == 'night') {
     body.classList.add('night');
-    localStorage.setItem('theme', 'dark');
+    localStorage.setItem('jd-theme', 'dark');
     document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
     if (document.getElementById('es').style.display == 'block') {
       document.getElementById('mode').innerHTML=escopy['light'];
     } else {
       document.getElementById('mode').innerHTML=encopy['light'];
     }
-    console.log(localStorage.getItem('theme'));
+    console.log(localStorage.getItem('jd-theme'));
   } else {
     body.classList.remove('night');
-    localStorage.setItem('theme', 'light');
+    localStorage.setItem('jd-theme', 'light');
     document.getElementById('mode').setAttribute('onClick', "togglemode(\'night\')");
     if (document.getElementById('es').style.display == 'block') {
       document.getElementById('mode').innerHTML=escopy['dark'];
     } else {
       document.getElementById('mode').innerHTML=encopy['dark'];
     }
-    console.log(localStorage.getItem('theme'));
+    console.log(localStorage.getItem('jd-theme'));
   }
 }
 function hasClass(element, className) {
