@@ -14,20 +14,17 @@ var encopy = {
   'dark': 'Go dark',
   'light': 'Bring me to light'
 };
+
 var body = document.getElementsByTagName('body')[0];
 document.getElementById("year").innerHTML = new Date().getFullYear();
-
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  body.classList.add('night');
-  document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
-  if (document.getElementById('es').style.display == 'block') {
-    document.getElementById('mode').innerHTML=escopy['light'];
-  } else {
-    document.getElementById('mode').innerHTML=encopy['light'];
-  }
+console.log(localStorage.getItem('theme'));
+if (!localStorage.getItem('theme')) {
+  localStorage.setItem('theme', 'light');
 }
-function togglemode(which) {
-  if (which == 'night') {
+
+if (window.matchMedia){
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('theme') != 'light') {
+    localStorage.setItem('theme', 'dark');
     body.classList.add('night');
     document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
     if (document.getElementById('es').style.display == 'block') {
@@ -35,14 +32,29 @@ function togglemode(which) {
     } else {
       document.getElementById('mode').innerHTML=encopy['light'];
     }
+  }
+}
+function togglemode(which) {
+  if (which == 'night') {
+    body.classList.add('night');
+    localStorage.setItem('theme', 'dark');
+    document.getElementById('mode').setAttribute('onClick', "togglemode(\'day\')");
+    if (document.getElementById('es').style.display == 'block') {
+      document.getElementById('mode').innerHTML=escopy['light'];
+    } else {
+      document.getElementById('mode').innerHTML=encopy['light'];
+    }
+    console.log(localStorage.getItem('theme'));
   } else {
     body.classList.remove('night');
+    localStorage.setItem('theme', 'light');
     document.getElementById('mode').setAttribute('onClick', "togglemode(\'night\')");
     if (document.getElementById('es').style.display == 'block') {
       document.getElementById('mode').innerHTML=escopy['dark'];
     } else {
       document.getElementById('mode').innerHTML=encopy['dark'];
     }
+    console.log(localStorage.getItem('theme'));
   }
 }
 function hasClass(element, className) {
