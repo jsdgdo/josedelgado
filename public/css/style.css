@@ -60,8 +60,8 @@ body {
   background-image: url('../img/circuitbg.svg');
   background-size: cover;
   background-position: center;
-  z-index: -2;
-  opacity: 0.2;
+  z-index: 0;
+  opacity: 0.5;
   /* Subtle background as per mockup */
 }
 
