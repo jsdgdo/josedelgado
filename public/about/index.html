@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,49 +12,54 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta property="og:title" content="About - José Delgado" />
-  <meta property="og:description" content="A product designer and portrait photographer wannabe." />
+  <meta property="og:description" content="Product designer and portrait photographer wannabe." />
   <meta property="og:image" content="../img/og.png" />
 </head>
+
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <nav>
-        <ul class="nav-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/work/">Work</a></li>
-          <li><a href="/about/" class="current">About</a></li>
-          <li><a href="https://onmyway.josedelgado.me">Blog</a></li>
-          <li><a href="mailto:josedelgadosanabria@gmail.com">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <span class="toggle-icon">☾</span>
-      </button>
-    </header>
-    
-    <main class="main">
-      <article class="about-content">
-        <figure class="profile-pic">
-          <img src="../img/jose.jpg" alt="José's portrait" title="This is me!">
-        </figure>
-        
-        <h1 class="page-title">The fun is in figuring it out</h1>
-        
-        <p>A product-minded designer with 10+ years of experience doing work for the web; first as a full stack engineer, then focusing on the front end, just to then end up where my passion and admiration always lied: Design.</p>
-        
-        <p>My fascination with communication took me to help build up the digital experience for several of the most important publication brands in Paraguay, to then transition into the exciting startup world through <a href="https://toky.co/en" target="_blank">Toky</a>: a turn-key solution to make communication between companies and customers as easy as possible. To eventually really sink my teeth into an exciting project such as the <a href="https://telnyx.com/" target="_blank">Telnyx</a> Mission Control Portal, where I helped start the Design System efforts while churning lots of features.</p>
-        
-        <p>Currently I’m working as a Senior Product Designer for <a href="https://www.rocket.chat/" target="_blank">Rocket.Chat</a>, an enterprise-grade messaging platform. I’m a part of the Team Collaboration and Design Systems squads.</p>
-        
-        <p>Work samples and case studies are shown upon request. If you're interested <a href="mailto:josedelgadosanabria@gmail.com">shoot me an email</a>! I’d love to have a chat.</p>
-      </article>
+  <div class="circuit-bg"></div>
+
+  <div class="viewport">
+    <main class="content-wrapper">
+      <section class="retro-card">
+        <h1 class="pixel-title">About</h1>
+        <div class="card-scroll-area">
+          <div class="card-body">
+            <p>A product-minded designer with 10+ years of experience doing work for the web; first as a full stack
+              engineer, then focusing on the front end, just to then end up where my passion and admiration always lied:
+              Design.</p>
+
+            <p>My fascination with communication took me to help build up the digital experience for several of the most
+              important publication brands in Paraguay, to then transition into the exciting startup world through <a
+                href="https://toky.co/en" target="_blank">Toky</a>: a turn-key solution to make communication between
+              companies and customers as easy as possible. To eventually really sink my teeth into an exciting project
+              such as the <a href="https://telnyx.com/" target="_blank">Telnyx</a> Mission Control Portal, where I
+              helped start the Design System efforts while churning lots of features.</p>
+
+            <p>Currently I’m working as a Senior Product Designer for <a href="https://www.rocket.chat/"
+                target="_blank">Rocket.Chat</a>, an enterprise-grade messaging platform. I’m a part of the Team
+              Collaboration and Design Systems squads.</p>
+
+            <p>Work samples and case studies are shown upon request. If you're interested <a
+                href="mailto:josedelgadosanabria@gmail.com">shoot me an email</a>! I’d love to have a chat.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-      <p>&copy; <span id="year"></span> José Delgado</p>
-    </footer>
+    <nav class="pill-nav">
+      <div class="nav-cluster left">
+        <a href="/about/" class="nav-item active">About</a>
+        <a href="mailto:josedelgadosanabria@gmail.com" class="nav-item">Email me</a>
+        <a href="/work/" class="nav-item">Work</a>
+      </div>
+      <div class="nav-cluster right">
+        <a href="/" class="nav-item">Home</a>
+      </div>
+    </nav>
   </div>
-  
+
   <script src="../js/scripts.js" type="text/javascript"></script>
 </body>
+
 </html>

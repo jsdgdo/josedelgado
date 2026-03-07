@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,79 +15,66 @@
   <meta property="og:description" content="Selected design work by José Delgado." />
   <meta property="og:image" content="../img/og.png" />
 </head>
+
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <nav>
-        <ul class="nav-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/work/" class="current">Work</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="https://onmyway.josedelgado.me">Blog</a></li>
-          <li><a href="mailto:josedelgadosanabria@gmail.com">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-        <span class="toggle-icon">☾</span>
-      </button>
-    </header>
-    
-    <main class="main">
-      <section class="work-intro">
-        <h1 class="page-title">Selected Work</h1>
-        <p class="page-subtitle">A collection of product design, research, and visual experiments.</p>
+  <div class="circuit-bg"></div>
+
+  <div class="viewport">
+    <main class="content-wrapper">
+      <section class="retro-card">
+        <h1 class="pixel-title">Selected Work</h1>
+        <div class="card-scroll-area">
+          <div class="card-body">
+            <p>A collection of product design, research, and visual experiments.</p>
+
+            <div class="project-list">
+              <article class="project-item">
+                <h2 class="item-title">Rocket.Chat Design System</h2>
+                <p class="item-desc">Establishing the visual language and component library for an open source
+                  communication platform.</p>
+                <div class="item-tags">
+                  <span>Design System</span>
+                  <span>UI/UX</span>
+                </div>
+              </article>
+
+              <article class="project-item">
+                <h2 class="item-title">Mobile App Redesign</h2>
+                <p class="item-desc">Improving the mobile experience for millions of users through intuitive navigation
+                  and cleaner UI.</p>
+                <div class="item-tags">
+                  <span>Mobile</span>
+                  <span>Product Design</span>
+                </div>
+              </article>
+
+              <article class="project-item">
+                <h2 class="item-title">Portrait Photography</h2>
+                <p class="item-desc">Capturing the essence of people through light and shadow.</p>
+                <div class="item-tags">
+                  <span>Photography</span>
+                  <span>Art Direction</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
       </section>
-
-      <div class="project-grid">
-        <!-- Project 1 Placeholder -->
-        <article class="project-card">
-          <div class="project-image placeholder"></div>
-          <div class="project-content">
-            <h2 class="project-title">Rocket.Chat Design System</h2>
-            <p class="project-desc">Establishing the visual language and component library for an open source communication platform.</p>
-            <div class="project-meta">
-              <span class="tag">Design System</span>
-              <span class="tag">UI/UX</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 Placeholder -->
-        <article class="project-card">
-          <div class="project-image placeholder"></div>
-          <div class="project-content">
-            <h2 class="project-title">Mobile App Redesign</h2>
-            <p class="project-desc">Improving the mobile experience for millions of users through intuitive navigation and cleaner UI.</p>
-            <div class="project-meta">
-              <span class="tag">Mobile</span>
-              <span class="tag">Product Design</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 Placeholder -->
-        <article class="project-card">
-          <div class="project-image placeholder"></div>
-          <div class="project-content">
-            <h2 class="project-title">Portrait Photography</h2>
-            <p class="project-desc">Capturing the essence of people through light and shadow.</p>
-            <div class="project-meta">
-              <span class="tag">Photography</span>
-              <span class="tag">Art Direction</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Add more projects here -->
-        
-      </div>
     </main>
 
-    <footer class="footer">
-      <p>&copy; <span id="year"></span> José Delgado</p>
-    </footer>
+    <nav class="pill-nav">
+      <div class="nav-cluster left">
+        <a href="/about/" class="nav-item">About</a>
+        <a href="mailto:josedelgadosanabria@gmail.com" class="nav-item">Email me</a>
+        <a href="/work/" class="nav-item active">Work</a>
+      </div>
+      <div class="nav-cluster right">
+        <a href="/" class="nav-item">Home</a>
+      </div>
+    </nav>
   </div>
-  
+
   <script src="../js/scripts.js" type="text/javascript"></script>
 </body>
+
 </html>
