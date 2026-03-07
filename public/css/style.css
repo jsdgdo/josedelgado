@@ -90,6 +90,20 @@ body::after {
   padding: 2rem;
 }
 
+/* Glass Overlay */
+.glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(55, 17, 225, 0.35);
+  /* #3711E1 at 25% opacity */
+  /* backdrop-filter removed because the strong blur completely hides the background SVG */
+  z-index: 1;
+  /* Above circuit-bg, below content-wrapper */
+}
+
 /* Main Content Card */
 .content-wrapper {
   max-width: 800px;
@@ -97,6 +111,7 @@ body::after {
   max-height: 85vh;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 .retro-card {
