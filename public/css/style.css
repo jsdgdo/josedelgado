@@ -646,6 +646,7 @@ body.case-study .pill-nav .nav-item:hover {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
+  cursor: pointer; /* Indicates clicking outside will close */
 }
 
 .lightbox-content {
@@ -654,6 +655,7 @@ body.case-study .pill-nav .nav-item:hover {
   border: 8px solid #fff;
   border-radius: 12px;
   box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  cursor: pointer;
 }
 
 .lightbox-close {

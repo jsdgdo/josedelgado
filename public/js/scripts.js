@@ -47,4 +47,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', checkScroll);
     area.addEventListener('scroll', checkScroll);
   });
+  // Lightbox Logic
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const images = document.querySelectorAll('.card-body img');
+
+    const openLightbox = (src) => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = src;
+      document.body.style.overflow = 'hidden'; // Lock scroll
+    };
+
+    const closeLightbox = () => {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = ''; // Unlock scroll
+    };
+
+    images.forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(img.src);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    // Clicking anywhere in the lightbox closes it (image or overlay)
+    lightbox.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
 });
