@@ -106,19 +106,24 @@ body::after {
 
 /* Main Content Card */
 .content-wrapper {
-  max-width: 800px;
+  max-width: 880px;
+  /* 10% wider than 800px */
   width: 100%;
-  max-height: 85vh;
+  max-height: 75vh;
+  /* Reduced height to ensure it clears the bottom nav */
   display: flex;
   flex-direction: column;
   z-index: 2;
+  margin-bottom: 4rem;
+  /* Specifically added to push it away from fixed nav */
 }
 
 .retro-card {
   background-color: var(--card-bg);
   border: 12px solid #000;
   border-radius: 40px;
-  padding: 3rem;
+  padding: 2.25rem 3rem;
+  /* Slightly less vertical padding as requested */
   box-shadow: inset -5px -5px 0px rgba(0, 0, 0, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
@@ -164,11 +169,21 @@ body::after {
   letter-spacing: -2px;
 }
 
-.card-body p {
+.card-body p,
+.card-body li {
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   line-height: 1.3;
   margin-bottom: 1.5rem;
   max-width: 100%;
+}
+
+.card-body ul, 
+.card-body ol {
+  margin-bottom: 1.5rem;
+}
+
+.card-body li {
+  margin-bottom: 0.75rem;
 }
 
 .card-body a {
@@ -229,10 +244,56 @@ body::after {
   border-bottom: none;
 }
 
-.item-title {
-  font-size: 1.65rem;
-  /* Reduced by 25% */
-  margin: 0 0 0.5rem 0;
+h2 {
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  /* Increased for impact */
+  font-weight: bold;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: clamp(1.8rem, 2.2vw, 1.45rem);
+  /* Slightly smaller to recede */
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: rgba(0, 0, 0, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* Subtle tracking for titles */
+}
+
+.project-item ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+
+.project-item li {
+  font-size: clamp(1.2rem, 2vw, 1.8rem); /* Matching body text size */
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.project-item li::before {
+  content: '▶';
+  font-size: 0.7rem; /* Small triangle */
+  color: #000;
+  opacity: 0.6;
+}
+
+.project-item li a {
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s;
+}
+
+.project-item li a:hover {
+  opacity: 0.7;
 }
 
 .item-desc {
@@ -369,5 +430,254 @@ body::before {
 
   50% {
     visibility: hidden;
+  }
+}
+
+/* Retro Toggles */
+details {
+  border: 4px solid #000;
+  margin-bottom: 1.5rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+details[open] {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+summary {
+  padding: 1rem 1.5rem;
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #000;
+  color: #fff;
+  transition: background var(--transition);
+}
+
+summary:hover {
+  background: #222;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: '▶';
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.details-content {
+  padding: 1.5rem;
+}
+
+.details-content p {
+  font-size: 1.1rem !important;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.details-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.details-content li {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+/* Case Study Page Variations (Reading Experience) */
+body.case-study {
+  overflow: hidden; /* Prevent double scrollbars, internal scrolling only */
+  background-color: var(--card-bg);
+}
+
+body.case-study .circuit-bg,
+body.case-study .glass-overlay {
+  display: none !important; /* Completely hide background elements to ensure solid color */
+}
+
+body.case-study .viewport {
+  background-color: var(--card-bg);
+  border: 12px solid #000;
+  border-radius: 0;
+  padding: 0;
+  position: fixed; /* Fixed frame on whole screen */
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto; /* Internal scrolling while border stays fixed */
+  z-index: 1;
+}
+
+body.case-study .content-wrapper {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  max-height: none;
+  padding: 6rem 2rem 12rem 2rem;
+  z-index: 2;
+  margin-bottom: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.case-study .retro-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  display: block;
+}
+
+body.case-study .retro-card::before {
+  display: none;
+}
+
+body.case-study .card-scroll-area {
+  overflow: visible; 
+  padding: 0;
+}
+
+body.case-study .card-body,
+body.case-study .card-body p,
+body.case-study .card-body li {
+  font-size: 1.5rem; /* Reverted to fixed as it was "good as it was" */
+  background: transparent !important;
+}
+
+body.case-study .card-body p,
+body.case-study .card-body li {
+  margin-bottom: 1.25rem;
+}
+
+body.case-study .pill-nav {
+  position: fixed; /* Keep it fixed at the bottom of the viewport frame */
+  bottom: 24px;
+  z-index: 100;
+}
+
+body.case-study .pill-nav .nav-item {
+  background-color: rgba(0, 0, 0, 0.75); /* Darker buttons */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+body.case-study .pill-nav .nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+  body.case-study .viewport {
+    border-width: 8px; /* Slightly thinner frame for mobile */
+  }
+  
+  body.case-study .content-wrapper {
+    padding: 3rem 1.5rem 8rem 1.5rem;
+  }
+  
+  body.case-study .pill-nav {
+    bottom: 16px;
+  }
+}
+
+/* Image Grid and Lightbox */
+.case-study img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.case-study img:hover {
+  transform: scale(1.02);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 4px solid #000;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+}
+
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85%;
+  border: 8px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: var(--font-pixel);
+}
+
+.image-caption {
+  font-size: clamp(0.7rem, 1.1vw, 1rem); /* Scaled with 1.5 ratio from 1rem max */
+  font-style: italic;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    grid-template-columns: 1fr;
   }
 }
