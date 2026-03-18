@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phone Number Purchase Flow - Toky - José Delgado</title>
+  <title>Toky Number Purchase Funnel - José Delgado</title>
   <link rel="stylesheet" href="../../../css/normalize.css">
   <link rel="stylesheet" href="../../../css/style.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta property="og:title" content="Phone Number Purchase Flow - Toky - José Delgado" />
-  <meta property="og:description" content="Case study for Toky phone number purchase flow redesign." />
+  <meta property="og:title" content="Toky Number Purchase Funnel - José Delgado" />
+  <meta property="og:description" content="Case study for Toky phone number purchase funnel redesign." />
 </head>
 
 <body class="case-study">
@@ -22,31 +22,92 @@
     <div class="glass-overlay"></div>
     <main class="content-wrapper">
       <section class="retro-card">
-        <h1 class="pixel-title" style="font-size: clamp(2rem, 5vw, 3.5rem);">Phone Number Purchase Flow</h1>
+        <h1 class="pixel-title" style="font-size: clamp(2rem, 5vw, 3.5rem);">Toky Number Purchase Funnel</h1>
         <div class="card-scroll-area">
           <div class="card-body">
 
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
-              alt="Checkout flow"
-              style="width: 100%; border-radius: 20px; border: 4px solid #000; margin-bottom: 2rem;">
-
-            <p><strong>Brand:</strong> Toky<br>
-              <strong>Role:</strong> Product Designer<br>
-              <strong>Timeline:</strong> 2 Months
+            <p><strong>Role:</strong> Product Designer<br>
+              <strong>When:</strong> March 2019
             </p>
 
-            <h2 class="item-title" style="margin-top: 2rem;">Overview</h2>
-            <p>Buying a virtual phone number involves navigating complex regulatory requirements across different countries. This project focused on simplifying that complexity into a transparent, user-friendly purchase flow that guides users through document submission and verification.</p>
+            <h2 class="item-title" style="margin-top: 2rem;">The problem</h2>
+            <p>For every new Toky account there was always the need to set up a testing phone number to test the full
+              Toky feature set, this was done via support, and there wasn’t a way for customers to monitor their request
+              once they’ve made it.</p>
+            <p>Moreover, number purchases were also done via support request. Customer had no idea of all the features
+              and countries they could purchase numbers from.</p>
 
-            <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=1200"
-              alt="UI components"
-              style="width: 100%; border-radius: 20px; border: 4px solid #000; margin-bottom: 2rem; margin-top: 2rem;">
+            <h2 class="item-title" style="margin-top: 2rem;">The goal</h2>
+            <p>Although our support team was amazing at handling this requests, we were growing fast, and it was time
+              for an <strong>automated customer-facing purchase flow</strong>.</p>
 
-            <h2 class="item-title">The Challenge</h2>
-            <p>Users were dropping off during the "Regulatory Requirements" step because they didn't know which documents were needed until after they'd started the purchase. There was also a lack of clarity around verification timelines, leading to high support ticket volume.</p>
+            <h2 class="item-title" style="margin-top: 2rem;">Research</h2>
+            <p>It was a race against the clock so we went through our customer support tool and looked for keywords that
+              would tell us the stories about the problem we were trying to solve, getting quotes like:</p>
 
-            <h2 class="item-title" style="margin-top: 2rem;">The Solution</h2>
-            <p>We redesigned the flow to show requirements upfront based on country selection. We also introduced a real-time verification tracker and improved the internal admin tool for faster document processing. This resulted in a 40% increase in successful number activations.</p>
+            <blockquote>
+              <p>“I can’t be waiting 2 days to start testing my account”</p>
+              <footer>— John from WeWork</footer>
+            </blockquote>
+
+            <blockquote>
+              <p>“I don’t know which countries I can buy numbers from, how am I supposed to test this with my
+                customers?”</p>
+              <footer>— Melani from Cabify</footer>
+            </blockquote>
+
+            <p>We were sure which scenarios to build for, so we went through our competitors and saw how they did
+              things, competitors such as: Twilio, Aircall, Talkdesk.</p>
+
+            <h2 class="item-title" style="margin-top: 2rem;">Proposed Solution</h2>
+            <p>We now knew that the flow should both include the testing numbers and give the ability to purchase a
+              phone number permanently once you’ve tested all the features that were of important to your business.</p>
+
+            <div class="image-grid">
+              <div class="grid-item">
+                <img src="../../../img/work/toky/numbers/numbers-1.jpg" alt="2 contexts, for testing and to purchase"
+                  class="grid-img">
+                <p class="image-caption">2 contexts, for testing and to purchase</p>
+              </div>
+              <div class="grid-item">
+                <img src="../../../img/work/toky/numbers/numbers-2.jpg"
+                  alt="Scenarios, what happens when you’ve already asked for a number?" class="grid-img">
+                <p class="image-caption">Scenarios, what happens when you’ve already asked for a number?</p>
+              </div>
+            </div>
+
+            <p>We also knew that we had to take advantage of the payment infrastructure that we already built, so we had
+              to start our funnel with:</p>
+            <ul>
+              <li>A recently converted customer, and finish up when they want to get a test number</li>
+              <li>A customer that already did their testing and wants to get one or more phone numbers for their account
+              </li>
+              <li>A customer that was already using the platform fully, and wanted to get some more phone numbers based
+                on criteria such as:
+                <ul>
+                  <li>Country</li>
+                  <li>Features (SMS, MMS, Toll-Free)</li>
+                  <li>Price</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h2 class="item-title" style="margin-top: 2rem;">Final Mockup</h2>
+            <div class="grid-item">
+              <img src="../../../img/work/toky/numbers/numbers-3.jpg" alt="Final Mockup" class="grid-img">
+              <p class="image-caption">Last iteration of the Number Search & Purchase Screen</p>
+            </div>
+            <p>With all that we’ve learned, we were able to streamline all the dependencies and put together a screen
+              that allowed the customer to search & purchase numbers with basically zero friction, whenever they wanted.
+            </p>
+
+            <h2 class="item-title" style="margin-top: 2rem;">Business Impact</h2>
+            <p>It’s kind of obvious but if you make a purchase process fast and easy enough, customers will come flying.
+              Even a month after we implemented this flow the phone number sales doubled, with a plus percentage every
+              month for the next 6 months before it stabilized.</p>
+            <p>Even though we realized the potential of phone numbers as a revenue stream this exceeded our expectations
+              by quite a large margin. This was the first time I saw how impactful a good idea and hard work could have
+              on a product, and how much difference it can make to a hard metric like revenue.</p>
 
             <div style="margin-top: 3rem; text-align: center;">
               <a href="/work/"
@@ -70,7 +131,43 @@
     </nav>
   </div>
 
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox-overlay">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="">
+  </div>
+
   <script src="../../../js/scripts.js" type="text/javascript"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn = document.querySelector('.lightbox-close');
+      const images = document.querySelectorAll('.card-body img');
+
+      images.forEach(img => {
+        img.addEventListener('click', () => {
+          lightbox.style.display = 'flex';
+          lightboxImg.src = img.src;
+          document.body.style.overflow = 'hidden'; // Lock scroll
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = ''; // Unlock scroll
+      };
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    });
+  </script>
 </body>
 
 </html>

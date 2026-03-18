@@ -165,7 +165,7 @@ body::after {
   font-size: clamp(2.25rem, 6vw, 4.5rem);
   /* Reduced by 25% */
   margin: 0 0 1.5rem 0;
-  line-height: 0.9;
+  line-height: 1.5;
   letter-spacing: -2px;
 }
 
@@ -680,4 +680,19 @@ body.case-study .pill-nav .nav-item:hover {
   .image-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Blockquote styles */
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #000;
+  font-style: italic;
+}
+
+blockquote footer {
+  font-size: 1.35rem; /* 50% bigger than 0.9rem */
+  font-style: normal;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
