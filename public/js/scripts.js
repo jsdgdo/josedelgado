@@ -58,6 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // FAB Mobile Navigation Toggle
+  const fabMenuBtn = document.querySelector('.fab-menu-btn');
+  const pillNav = document.querySelector('.pill-nav');
+  if (fabMenuBtn && pillNav) {
+    fabMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      pillNav.classList.toggle('fab-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (pillNav.classList.contains('fab-open')) {
+        // If clicked outside the pillNav container, close it
+        if (!pillNav.contains(e.target)) {
+          pillNav.classList.remove('fab-open');
+        }
+      }
+    });
+  }
+
   // Scroll Indicator Logic
   const scrollAreas = document.querySelectorAll('.card-scroll-area');
 

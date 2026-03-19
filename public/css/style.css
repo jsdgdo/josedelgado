@@ -323,11 +323,19 @@ h3 {
   bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  justify-content: space-between;
   width: calc(100% - 4rem);
   max-width: 1000px;
   z-index: 10;
+}
+
+.fab-menu-btn {
+  display: none;
+}
+
+.nav-items-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .nav-cluster {
@@ -388,16 +396,155 @@ body::before {
   }
 
   .pill-nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .fab-menu-btn {
+    display: flex;
+    position: fixed;
     bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--nav-pill-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-inverse);
+    z-index: 101;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition);
+    pointer-events: auto;
+  }
+
+  .fab-menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .fab-icon {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-inverse);
+    border-radius: 2px;
+    transition: background-color var(--transition);
+  }
+
+  .fab-icon::before,
+  .fab-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-inverse);
+    border-radius: 2px;
+    transition: transform var(--transition), top var(--transition);
+  }
+
+  .fab-icon::before {
+    top: -8px;
+  }
+
+  .fab-icon::after {
+    top: 8px;
+  }
+
+  .pill-nav.fab-open .fab-icon {
+    background-color: transparent;
+  }
+
+  .pill-nav.fab-open .fab-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .pill-nav.fab-open .fab-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .pill-nav.fab-open .fab-menu-btn {
+    background-color: #000;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .nav-items-container {
+    display: block;
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    pointer-events: none;
   }
 
   .nav-cluster {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: contents;
+  }
+
+  .nav-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .pill-nav.fab-open .nav-items-container .nav-item {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .pill-nav.fab-open .nav-cluster.left .nav-item:nth-child(1) {
+    transform: translate(calc(-50% - 100px), calc(-50% - 30px)) scale(1);
+  }
+
+  .pill-nav.fab-open .nav-cluster.left .nav-item:nth-child(2) {
+    transform: translate(calc(-50% - 65px), calc(-50% - 100px)) scale(1);
+  }
+
+  .pill-nav.fab-open .nav-cluster.left .nav-item:nth-child(3) {
+    transform: translate(calc(-50% + 65px), calc(-50% - 100px)) scale(1);
+  }
+
+  .pill-nav.fab-open .nav-cluster.right .nav-item:nth-child(1) {
+    transform: translate(calc(-50% + 100px), calc(-50% - 30px)) scale(1);
+  }
+
+  body.case-study .fab-menu-btn {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  body.case-study .fab-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  body.case-study .pill-nav.fab-open .fab-menu-btn {
+    background-color: #000;
+    border-color: rgba(255, 255, 255, 0.4);
   }
 }
 
