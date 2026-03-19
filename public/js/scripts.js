@@ -2,6 +2,51 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Retro Redesign Initialized');
 
+  // Password Protection Logic
+  if (document.body.classList.contains('case-study')) {
+    const isUnlocked = sessionStorage.getItem('work_unlocked') === 'true';
+    if (isUnlocked) {
+      document.body.classList.add('unlocked');
+    } else {
+      // Create and inject the modal
+      const modalHtml = `
+        <div id="password-modal" class="password-modal-overlay">
+          <div class="retro-card">
+            <h2 class="pixel-title" style="font-size: 2rem; margin-bottom: 1rem;">Protected</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.4;">Please enter the password to view this case study.</p>
+            <form id="password-form" style="display: flex; flex-direction: column; gap: 1rem;">
+              <input type="password" id="work-password" placeholder="Password" required style="padding: 0.8rem; font-family: var(--font-pixel); font-size: 1.2rem; border: 4px solid #000; outline: none; border-radius: 12px;">
+              <p id="password-error" style="color: #a00; display: none; margin: 0; font-size: 1rem; font-weight: bold;">Incorrect password.</p>
+              <button type="submit" style="display: inline-block; padding: 10px 20px; font-family: var(--font-pixel); font-size: 1.2rem; background: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;">Unlock</button>
+            </form>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+      
+      const form = document.getElementById('password-form');
+      const errorMsg = document.getElementById('password-error');
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inputStr = document.getElementById('work-password').value;
+        if (inputStr === 'Josesworkin2026') {
+          sessionStorage.setItem('work_unlocked', 'true');
+          document.body.classList.add('unlocked');
+          const modal = document.getElementById('password-modal');
+          if (modal) {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+              modal.remove();
+            }, 300);
+          }
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      });
+    }
+  }
+
   // Optional: Add a slight flicker effect on card click or other pixel-y interactions
   const retroCard = document.querySelector('.retro-card');
   if (retroCard) {

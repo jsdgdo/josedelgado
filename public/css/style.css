@@ -572,7 +572,6 @@ body.case-study .card-body li {
 
 body.case-study .pill-nav {
   position: fixed; /* Keep it fixed at the bottom of the viewport frame */
-  bottom: 24px;
   z-index: 100;
 }
 
@@ -585,7 +584,13 @@ body.case-study .pill-nav .nav-item {
 }
 
 body.case-study .pill-nav .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.case-study .pill-nav .nav-item.active {
+  background-color: #000;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 600px) {
@@ -595,10 +600,6 @@ body.case-study .pill-nav .nav-item:hover {
   
   body.case-study .content-wrapper {
     padding: 3rem 1.5rem 8rem 1.5rem;
-  }
-  
-  body.case-study .pill-nav {
-    bottom: 16px;
   }
 }
 
@@ -697,4 +698,59 @@ blockquote footer {
   font-style: normal;
   opacity: 0.8;
   margin-top: 0.5rem;
+}
+
+/* --- Password Protection Overlay --- */
+body.case-study:not(.unlocked) .viewport {
+  filter: blur(20px);
+  pointer-events: none;
+  opacity: 0.15;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+body.case-study:not(.unlocked) .pill-nav {
+  pointer-events: none;
+  opacity: 0;
+}
+
+body.case-study:not(.unlocked) {
+  overflow: hidden;
+}
+
+.password-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--card-bg);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+}
+
+.password-modal-overlay .retro-card {
+  max-width: 420px;
+  width: 100%;
+  background-color: var(--card-bg) !important;
+  border: 12px solid #000 !important;
+  border-radius: 40px !important;
+  padding: 2.25rem !important;
+  box-shadow: inset -5px -5px 0px rgba(0, 0, 0, 0.2), 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+  pointer-events: auto;
+  transform: none !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.password-modal-overlay button:hover {
+  background-color: #333 !important;
+}
+
+@media (max-width: 600px) {
+  .password-modal-overlay .retro-card {
+    border-width: 6px !important;
+    border-radius: 20px !important;
+    padding: 2rem 1.5rem !important;
+  }
 }
