@@ -163,8 +163,6 @@ body::after {
 
 .pixel-title {
   font-size: clamp(2.25rem, 6vw, 4.5rem);
-  /* Reduced by 25% */
-  margin: 0 0 1.5rem 0;
   line-height: 1.5;
   letter-spacing: -2px;
 }
