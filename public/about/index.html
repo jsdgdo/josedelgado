@@ -20,11 +20,13 @@
 </head>
 
 <body>
-  <div class="circuit-bg"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="circuit-bg" aria-hidden="true"></div>
 
   <div class="viewport">
-    <div class="glass-overlay"></div>
-    <main class="content-wrapper">
+    <div class="glass-overlay" aria-hidden="true"></div>
+    <main class="content-wrapper" id="main-content">
       <section class="retro-card">
         <h1 style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 0, 0); white-space:nowrap; border:0;">José Delgado — Product Designer & Engineer</h1>
         <h2 class="pixel-title">About</h2>
@@ -50,7 +52,7 @@
       </section>
     </main>
 
-    <nav class="pill-nav">
+    <nav class="pill-nav" aria-label="Main navigation">
       <button class="fab-menu-btn" aria-label="Toggle Navigation">
         <span class="fab-icon"></span>
       </button>

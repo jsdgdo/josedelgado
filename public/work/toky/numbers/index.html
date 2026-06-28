@@ -21,11 +21,13 @@
 </head>
 
 <body class="case-study">
-  <div class="circuit-bg"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="circuit-bg" aria-hidden="true"></div>
 
   <div class="viewport">
-    <div class="glass-overlay"></div>
-    <main class="content-wrapper">
+    <div class="glass-overlay" aria-hidden="true"></div>
+    <main class="content-wrapper" id="main-content">
       <section class="retro-card">
         <h1 class="pixel-title" style="font-size: clamp(2rem, 5vw, 3.5rem);">Toky Number Purchase Funnel</h1>
         <div class="card-scroll-area">
@@ -124,7 +126,7 @@
       </section>
     </main>
 
-    <nav class="pill-nav">
+    <nav class="pill-nav" aria-label="Main navigation">
       <button class="fab-menu-btn" aria-label="Toggle Navigation">
         <span class="fab-icon"></span>
       </button>
@@ -143,7 +145,7 @@
 
   <!-- Lightbox Overlay -->
   <div id="lightbox" class="lightbox-overlay">
-    <span class="lightbox-close">&times;</span>
+    <button class="lightbox-close" aria-label="Close">&times;</button>
     <img id="lightbox-img" class="lightbox-content" src="">
   </div>
 

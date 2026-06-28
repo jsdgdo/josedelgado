@@ -8,15 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isUnlocked) {
       document.body.classList.add('unlocked');
     } else {
-      // Create and inject the modal
+      let lastFocused = document.activeElement;
+
       const modalHtml = `
-        <div id="password-modal" class="password-modal-overlay">
+        <div id="password-modal" class="password-modal-overlay" role="dialog" aria-modal="true" aria-label="Password required">
           <div class="retro-card">
             <h2 class="pixel-title" style="font-size: 2rem; margin-bottom: 1rem;">Protected</h2>
             <p style="font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.4;">Please enter the password to view this case study.</p>
             <form id="password-form" style="display: flex; flex-direction: column; gap: 1rem;">
-              <input type="password" id="work-password" placeholder="Password" required style="padding: 0.8rem; font-family: var(--font-pixel); font-size: 1.2rem; border: 4px solid #000; outline: none; border-radius: 12px;">
-              <p id="password-error" style="color: #a00; display: none; margin: 0; font-size: 1rem; font-weight: bold;">Incorrect password.</p>
+              <input type="password" id="work-password" placeholder="Password" aria-label="Password" required style="padding: 0.8rem; font-family: var(--font-pixel); font-size: 1.2rem; border: 4px solid #000; outline: none; border-radius: 12px;">
+              <p id="password-error" style="color: #c00; display: none; margin: 0; font-size: 1rem; font-weight: bold;">Incorrect password.</p>
               <button type="submit" style="display: inline-block; padding: 10px 20px; font-family: var(--font-pixel); font-size: 1.2rem; background: #000; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;">Unlock</button>
             </form>
           </div>
@@ -24,12 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       document.body.insertAdjacentHTML('beforeend', modalHtml);
       
+      const viewport = document.querySelector('.viewport');
+      if (viewport) viewport.setAttribute('aria-hidden', 'true');
+      
       const form = document.getElementById('password-form');
       const errorMsg = document.getElementById('password-error');
+      const passwordInput = document.getElementById('work-password');
+      
+      passwordInput.focus();
       
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const inputStr = document.getElementById('work-password').value;
+        const inputStr = passwordInput.value;
         if (inputStr === 'Josesworkin2026') {
           sessionStorage.setItem('work_unlocked', 'true');
           document.body.classList.add('unlocked');
@@ -38,10 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.opacity = '0';
             setTimeout(() => {
               modal.remove();
+              if (viewport) viewport.removeAttribute('aria-hidden');
+              if (lastFocused) lastFocused.focus();
             }, 300);
           }
         } else {
           errorMsg.style.display = 'block';
+          passwordInput.focus();
         }
       });
     }
@@ -69,10 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
       if (pillNav.classList.contains('fab-open')) {
-        // If clicked outside the pillNav container, close it
         if (!pillNav.contains(e.target)) {
           pillNav.classList.remove('fab-open');
         }
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && pillNav.classList.contains('fab-open')) {
+        pillNav.classList.remove('fab-open');
+        fabMenuBtn.focus();
       }
     });
   }
@@ -117,32 +133,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.lightbox-close');
     const images = document.querySelectorAll('.card-body img');
+    let lastFocusedImg = null;
 
-    const openLightbox = (src) => {
+    const openLightbox = (src, triggerImg) => {
       lightbox.style.display = 'flex';
       lightboxImg.src = src;
-      document.body.style.overflow = 'hidden'; // Lock scroll
+      lastFocusedImg = triggerImg;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
     };
 
     const closeLightbox = () => {
       lightbox.style.display = 'none';
-      document.body.style.overflow = ''; // Unlock scroll
+      document.body.style.overflow = '';
+      if (lastFocusedImg) {
+        lastFocusedImg.focus();
+        lastFocusedImg = null;
+      }
     };
 
     images.forEach(img => {
       img.addEventListener('click', (e) => {
         e.stopPropagation();
-        openLightbox(img.src);
+        openLightbox(img.src, img);
       });
+
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          e.stopPropagation();
+          openLightbox(img.src, img);
+        }
+      });
+
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
     });
 
     closeBtn.addEventListener('click', closeLightbox);
     
-    // Clicking anywhere in the lightbox closes it (image or overlay)
-    lightbox.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
     });
   }
 });
